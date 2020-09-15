@@ -1,0 +1,71 @@
+*, *::before, *::after
+  margin: 0
+  -webkit-box-sizing: border-box  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box     /* Firefox, other Gecko */
+  box-sizing: border-box          /* Opera/IE 8+ */
+
+body,html
+  background: #fff
+  font: normal 16px Arial, "Helvetica Neue", Helvetica, sans-serif
+  margin: 0
+  padding: 0
+
+body
+  width: 100vw
+  height: 100%
+  color: #000
+  overflow-x: hidden
+  +CrossBrowser(overflow-x, hidden)
+  +CrossBrowser(font-smoothing, antialiased)
+
+h1,h2,h3,h5,h5
+  padding: 0
+  margin: 0
+
+section.nav-spacer
+  display: block
+  //padding-top: 75px /* clear fix for navigation header */
+  overflow-x: hidden
+
+ul
+  padding: 0
+  margin: 0
+
+button
+  color: $primary
+  background: $secondary
+  outline: none
+  border: none
+  cursor: pointer
+  :hover
+    outline: none
+    border: none
+    cursor: pointer
+
+
+a,a:hover
+  text-decoration: none
+
+li,a,i,button,span
+  +CrossBrowser(transition, .3s ease-in-out)
+  cursor: pointer
+  &:hover
+    cursor: pointer
+
+
+li,li:hover
+  list-style: none
+
+a,a:hover
+  text-decoration: none
+  color: inherit
+  
+img
+  +Borders()
+
+hr
+  +mix_hr()
+
+/* Work around for boostrap 4 collapse not closing on mobile */
+.navbar-close
+  display: none !important

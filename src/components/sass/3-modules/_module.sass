@@ -1,0 +1,108 @@
+/* MODULES */
+
+.m-title
+  text-align: center
+  font: 200 3.2rem 'Ultra', serif ,sans-serif
+  color: $primary
+  text-shadow: 5px 2px 5px #000
+  line-height: 1em
+  margin: .8rem 0
+
+.logo-title
+  @extend .m-title
+  color: #4464AD
+  span 
+    text-shadow: none
+    font: inherit
+    margin-left: 4px
+    display: inline-block
+    color: #3c3c3c
+    position: relative
+    .fa,.fa::after
+      color: #5c5c5c
+      font-size: 2.8rem
+
+.m-subtitle
+  text-align: center
+  color: #4e3e3e
+  font: 550 1.5em 'Anton',Arial, sans-serif
+  margin: .4rem 0
+
+.pill-edge
+  border-radius: 10px
+
+
+.list
+  padding: 5px 7px 
+  .list-item
+    font-size: 1rem
+    font-weight: 600
+    padding: 5px 7px 
+
+  
+.text-center
+  text-align: center
+  max-width: 100%
+  padding: 5px 10px 
+  .no-overflow
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+
+.input-tray
+  vertical-align: middle
+  .input-inline
+    height: 100%
+    min-width: 200px 
+    text-align: center
+    border-radius: 5px
+    border: 1px ridge #667
+    &::placeholder
+      font-size: .9em
+      font-style: italic
+      text-align: center
+    &:focus
+      background: #D6E5EB
+
+.thumb-tray
+  display: grid
+  place-items: center
+  width: 50px
+  height: 50px
+  border: 1px solid #000
+  position: relative
+  +CrossBrowser(transition, .3s ease-in-out)
+  i,img
+    display: grid
+    place-items: center
+    width: 100%
+    height: 100%
+    background: red
+  &.has-image
+    &:hover
+      +CrossBrowser(transform,scale(1.5))
+  &.no-image
+    &:hover::after
+      content: "add image"
+      display: grid
+      place-items: center
+      height: inherit
+      width: inherit
+      text-align: center
+      position: absolute
+      top: 0 
+      left: 0 
+      color: #000
+      font: italic 600 .85em "Roboto", sans-serif
+      background: lightgrey
+      opacity: .85
+
+  .fa
+    font-size: 1.5rem
+
+
+.fa
+  // fake font-awesome namespace for icons
+  display: block 
+
+

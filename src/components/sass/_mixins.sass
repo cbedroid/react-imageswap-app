@@ -1,0 +1,86 @@
+
+// Cross Browser Property
+=CrossBrowser($name,$style)
+  -moz-#{$name}: #{$style}
+  -webkit-#{$name}: #{$style}
+  -ms-#{$name}: #{$style}
+  -o-#{$name}: #{$style}
+  #{$name}: #{$style}
+
+=Borders()
+  $range: 1,2,3,4,5,6,7,8,9,10 
+  $colors: ("primary": $primary,"dark":black,"error":red,"info":blue,"success":green,"warn":yellow)
+  @each $size in  $range
+    @each $name,$color in $colors
+      &.bdr-#{$name}-#{$size}
+        border: #{$size}px solid #{$color}
+
+=mix_hr()
+  // HR MIXIN CHANGE COLOR AND SIZE
+  $range: 1,2,3,4,5,6,7,8,9,10 
+  $colors: ("primary": $secondary,"dark":black,"error":red,"info":blue,"success":green,"warn":yellow)
+  @each $size in  $range
+    @each $name,$color in $colors
+      &.hr-#{$size}-#{$name}
+        display: block
+        width: 100%
+        margin: 0
+        padding: 0
+        border: #{$size}px ridge #{$color}
+
+=position_zero()
+  // zero out all position element 
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+=LineSpread($pos,$bottom,$color:"#fff")
+  // Border bottom line spread  from middle
+  box-sizing: border-box
+  positon: $pos
+  bottom: $bottom
+  border-bottom: 3px solid $color
+  animation-name: spread_ease_out
+  animation-duration: .5s
+  animation-fill-mode: forwards
+
+// Image to fit div container 
+=mixin_bg_image($pos,$bgsize,$bpos:"center center",$repeat:"no-repeat no-repeat")
+  top: 0
+  left: 0
+  right: 0
+  background-attachment: $pos
+  +CrossBrowser(background-position,unquote($bpos)) //50% 40%
+  +CrossBrowser(background-repeat,no-repeat)
+  +CrossBrowser(background-size,$bgsize )
+
+// KEYFRAMES
+=keyframe($name)
+  $colors: green,red,blue,yellow,orange,purple,grey,pink,teal,orangered
+  @keyframes #{$name}
+    $length: #{100 / length($colors)}
+    @debug length is $length
+    $frame: 0
+
+    @each $color in $colors
+      #{$frame}%
+        @debug $color
+        //box-shadow: 2px  5px 5px  $color
+        $lgc: red
+        @for $c from 1 through 5
+          $lgc: append($lgc,nth($colors, random(length($colors))),comma)
+          background: linear-gradient(45deg, $lgc)
+      $frame: $frame + $length
+    @content
+
+@keyframes colorScroll
+  0%
+    +CrossBrowser(background-clip,text) 
+    +CrossBrowser(background-image,linear-gradient(to bottom right ,black,red ) )
+    opacity: .5
+    
+  100%
+    +CrossBrowser(background-clip,text) 
+    +CrossBrowser(background-image,linear-gradient(to top bottom,red,black,#ddd ) )
+    opacity: .5
