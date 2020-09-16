@@ -1,32 +1,33 @@
-import React, { Component } from 'react';
+import React, { useContext } from "react";
+import { stringFormat } from "../helpers.js";
+import { GlobalContext } from "../context/GlobalState";
 
-class StoredImage extends Component {
-  state = {  }
-  render() { 
-    return (
-       <li onClick={()=> this.captureStoredImage(this.props.img.id)}
-        className={`list-item thumb-tray ${this.props.img.class}`}>
-        {this.props.img.value}
-      </li>
-      );
-  }
-  
-captureStoredImage = stored_image_id => {
+const StoredImage = ({ storedimage }) => {
+  const  { image }  = useContext(GlobalContext);
+  const  { updateStoredImage }  = useContext(GlobalContext);
+
+
+  const captureImage = () => { 
     // Capture current imageWidget picture 
-    // Save the image into the current clicked StoredImage's li. 
-    const storedImages = this.props.state.storedImages.map(si => {
-      if (si.id === stored_image_id){
-        si.value = this.props.imgTag(50,50);
-        // set the li class name
-        si.class = 'has-image';
-      }
-      return si 
-    })
-    this.props.updateStoredImageState({storedImages});
-    console.log('Images ReStored',storedImages);
+    console.log('captured image ',storedimage)
+    const image_src = stringFormat(image.smallTemplate,image.id)
+    const img_template = `<img className="bdr-dark-3" src=${image_src} alt="SavedImage ${image.id}" />`
+
+    // Update the local storedimage's  data
+    storedimage = {...storedimage, ...{className:"has-image",value:img_template }}
+
+    // Update the local storedImage dynamically 
+    updateStoredImage(storedimage);
   }
+
+  return (
+      <li onClick={()=> captureImage()}
+      className={`list-item thumb-tray ${storedimage.className}`}>
+      {storedimage.value || <i className="fa fa-image"></i>}
+    </li>
+    );
+  
 }
- 
 export default StoredImage;
 
   
