@@ -29,6 +29,14 @@ class ButtonInput extends Component {
       </div>
     );
   }
+
+  getUserInput (value) {
+    const image_number = parseInt(value);
+    if (image_number >= 0)
+    {
+      this.props.setImageNumber(value);
+    }
+  }
+
 }
-export default ButtonInput
-  ;
+export default ButtonInput;
