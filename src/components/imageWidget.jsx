@@ -8,7 +8,7 @@ const ImageWidget = (props) => {
   
   return (
     <div className="l-widget center">
-        <img className="bdr-dark-3" src={stringFormat(image.largeTemplate,imageID)} alt={`Img ${imageID}`} />
+      <img className="bdr-dark-3" src={stringFormat(image.largeTemplate,imageID)} alt={`Img ${imageID}`} />
       <div className="l-widget notes light">
         <p className="text-muted m-subtitle text-center" >
           Save your awesome images here!

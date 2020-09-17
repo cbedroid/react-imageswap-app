@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
+
 const ButtonInput = () => {
   const { updateImage } = useContext(GlobalContext);
   const  imageID  = useContext(GlobalContext).image.id;
@@ -18,12 +19,9 @@ const ButtonInput = () => {
         <input
           className="input-inline"
           type="number"
-          min="1"
-          max="1080"
-          step="1"
-          onChange={(event) => {updateImage(event.target.value)} }
-          id="image_no"
+          min="1" max="1080" step="1"
           placeholder="Enter a Number"
+          onChange={(event) => {updateImage(event.target.value)} }
         />
       </span>
       <button
@@ -34,5 +32,6 @@ const ButtonInput = () => {
       </button>
     </div>
   );
+
 };
 export default ButtonInput;

@@ -11,9 +11,9 @@ const initialState = {
   },
 
   storedImages: [
-    { key: 1, id: 1, value: null, className: "no-image" },
-    { key: 2, id: 2, value: null, className: "no-image" },
-    { key: 3, id: 3, value: null, className: "no-image" },
+    { key: 1, id: 1, imageRef: null, value: null, className: "no-image" },
+    { key: 2, id: 2, imageRef: null, value: null, className: "no-image" },
+    { key: 3, id: 3, imageRef: null, value: null, className: "no-image" },
   ],
 };
 

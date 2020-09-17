@@ -19,7 +19,7 @@ function App(){
             style={{ width: 400, background: 'whitesmoke' }}>
               {storedImages.map(storedimage => <StoredImage key={storedimage.key} storedimage={storedimage} />)}
           </ul>
-        <ButtonInput />
+          <ButtonInput />
         </div>
     </GlobalProvider>
   ) 

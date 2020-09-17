@@ -16,10 +16,12 @@ export default (state, action) => {
         image: { ...state.image, ...{ id: +action.payload || 0 } },
       };
     case "UPDATE_STOREDIMAGE":
-      console.log("Update Stored Image", action.payload);
+      console.log("Before Stored Image", state.storedImages);
+      const updated_images = { ...state.storedImages, ...action.payload };
+      console.log("Update Stored Image", updated_images);
       return {
         ...state,
-        storedImages: { ...state.storedImages, ...action.payload },
+        storedImages: updated_images,
       };
     default:
       return state;
